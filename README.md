@@ -19,12 +19,18 @@ minify file1 file2 file3  # Minify files with name passed in args
 
 ```bash
 #!/bin/bash
-
-ip=`hostname -I`
-for i in $ip
+MY_DIRECTORIES="/home /var/log"
+echo "Top Ten Disk Space Usage"
+for DIR in $MY_DIRECTORIES
 do
-echo $i
+echo "The $DIR Directory:"
+du -S $DIR 2>/dev/null |
+sort -rn |
+sed '{11,$D; =}' |
+sed 'N; s/\n/ /' |
+awk '{printf $1 ":" "\t" $2 "\t" $3 "\n"}'
 done
+exit
 ```
 
 ### lint (with exit-code: 1)
@@ -32,35 +38,54 @@ done
 ```diff
 --- example.sh.orig
 +++ example.sh
-@@ -1,7 +1,6 @@
+@@ -1,13 +1,12 @@
  #!/bin/bash
- 
--ip=`hostname -I`
--for i in $ip
+ MY_DIRECTORIES="/home /var/log"
+ echo "Top Ten Disk Space Usage"
+-for DIR in $MY_DIRECTORIES
 -do
--echo $i
-+ip=$(hostname -I)
-+for i in $ip; do
-+    echo $i
+-echo "The $DIR Directory:"
+-du -S $DIR 2>/dev/null |
+-sort -rn |
+-sed '{11,$D; =}' |
+-sed 'N; s/\n/ /' |
+-awk '{printf $1 ":" "\t" $2 "\t" $3 "\n"}'
++for DIR in $MY_DIRECTORIES; do
++    echo "The $DIR Directory:"
++    du -S $DIR 2>/dev/null |
++        sort -rn |
++        sed '{11,$D; =}' |
++        sed 'N; s/\n/ /' |
++        awk '{printf $1 ":" "\t" $2 "\t" $3 "\n"}'
  done
+ exit
 ```
 
 ### format
 
 ```bash
 #!/bin/bash
-
-ip=$(hostname -I)
-for i in $ip; do
-    echo $i
+MY_DIRECTORIES="/home /var/log"
+echo "Top Ten Disk Space Usage"
+for DIR in $MY_DIRECTORIES; do
+    echo "The $DIR Directory:"
+    du -S $DIR 2>/dev/null |
+        sort -rn |
+        sed '{11,$D; =}' |
+        sed 'N; s/\n/ /' |
+        awk '{printf $1 ":" "\t" $2 "\t" $3 "\n"}'
 done
+exit
 ```
 
 ### minify
 
 ```bash
-ip=$(hostname -I)
-for i in $ip;do
-echo $i
+MY_DIRECTORIES="/home /var/log"
+echo "Top Ten Disk Space Usage"
+for DIR in $MY_DIRECTORIES;do
+echo "The $DIR Directory:"
+du -S $DIR 2>/dev/null|sort -rn|sed '{11,$D; =}'|sed 'N; s/\n/ /'|awk '{printf $1 ":" "\t" $2 "\t" $3 "\n"}'
 done
+exit
 ```
