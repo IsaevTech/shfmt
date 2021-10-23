@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ $# -eq 0 ]; then
+	# shellcheck disable=SC2046
+	shfmt -d $(shfmt -f .)
+else
+	shfmt -d "$@"
+fi
