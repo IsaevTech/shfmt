@@ -89,3 +89,4 @@ du -S $DIR 2>/dev/null|sort -rn|sed '{11,$D; =}'|sed 'N; s/\n/ /'|awk '{printf $
 done
 exit
 ```
+<!-- markdownlint-configure-file { "MD013": { "line_length": 120 } } -->
