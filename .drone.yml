@@ -5,6 +5,22 @@ name: default
 image_pull_secrets:
   - nexus_docker
 steps:
+  - name: Lint Docker
+    image: repo.isaev.tech/hadolint:latest
+    commands:
+      - lint
+  - name: Lint Yaml
+    image: repo.isaev.tech/yamllint:latest
+    commands:
+      - lint
+  - name: Lint Shell
+    image: repo.isaev.tech/shellint:latest
+    commands:
+      - lint
+  - name: Lint Markdown
+    image: repo.isaev.tech/mdlint:latest
+    commands:
+      - lint
   - name: Build and push docker
     image: plugins/docker
     when:

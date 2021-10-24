@@ -1,6 +1,6 @@
 # Shell Linter and formatter
 
-[![Build Status](https://ci.isaev.tech/api/badges/IsaevTech/yamllint/status.svg)](https://ci.isaev.tech/IsaevTech/yamllint)
+[![Build Status](https://ci.isaev.tech/api/badges/IsaevTech/shfmt/status.svg)](https://ci.isaev.tech/IsaevTech/shfmt)
 
 ## Usage
 
