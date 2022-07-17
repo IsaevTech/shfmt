@@ -1,6 +1,7 @@
 # Shell Linter and formatter
 
-[![Build Status](https://ci.isaev.tech/api/badges/IsaevTech/shfmt/status.svg)](https://ci.isaev.tech/IsaevTech/shfmt)
+[![Docker Image CI](https://github.com/IsaevTech/shfmt/actions/workflows/docker-image.yml/badge.svg)](https://github.com/IsaevTech/shfmt/actions/workflows/docker-image.yml)
+![Docker Pulls](https://img.shields.io/docker/pulls/ismv/shfmt)
 
 ## Usage
 
